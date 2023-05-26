@@ -5,29 +5,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Penelusuran Suara Pahlawan Nasional</h1>
-    </header>
-    <main>
-        <div class="container">
-            <div class="transcription">
-                <p id="transcription"></p>
-            </div>
-            <div class="result">
-                <h2 id="result"></h2>
-            </div>
-            <div id="bio-container">
-                <div id="bio-image"></div>
-                <div id="bio-details">
-                    <h2 id="bio-name"></h2>
-                    <p id="bio-description"></p>
-                </div>
-            </div>
-            <div class="button-container">
-                <button onclick="startListening()">Mulai Penelusuran Suara</button>
-            </div>
+    <h1>Penelusuran Suara Pahlawan Nasional</h1>
+    <div id="transcription"></div>
+    <div id="result"></div>
+    <div id="bio-container">
+        <div id="bio-image"></div>
+        <div id="bio-details">
+            <h2 id="bio-name"></h2>
+            <p id="bio-description"></p>
         </div>
-    </main>
+    </div>
+    <div class="container">
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Ketik nama atau ucapkan dengan suara...">
+            <button type="submit">Cari</button>
+        </form>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -25,21 +25,30 @@ function hideRecordingIndicator() {
     }
 }
 
-recognition.onresult = function(event) {
-    const result = event.results[0][0].transcript;
-    document.getElementById('transcription').innerText = result;
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
 
-    processSpeech(result);
-}
+searchForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const searchText = searchInput.value.trim();
+    processSpeech(searchText);
+});
 
-recognition.onerror = function(event) {
-    console.error('Terjadi kesalahan penelusuran suara:', event.error);
-    hideRecordingIndicator();
+recognition.onstart = function() {
+    console.log('Penelusuran suara aktif. Mohon ucapkan perintah...');
 }
 
 recognition.onend = function() {
     isListening = false;
     hideRecordingIndicator();
+    console.log('Penelusuran suara berakhir.');
+}
+
+recognition.onresult = function(event) {
+    const result = event.results[0][0].transcript;
+    document.getElementById('transcription').innerText = result;
+
+    processSpeech(result);
 }
 
 function processSpeech(result) {
@@ -60,6 +69,7 @@ function processSpeech(result) {
     }
 
     document.getElementById('result').innerText = 'Hasil Penelusuran: ' + pahlawan;
+    searchInput.value = '';
 }
 
 function showBio(pahlawan) {
