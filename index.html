@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pengenalan Pahlawan Nasional</title>
+    <style>
+        /* Style untuk tampilan pencarian */
+        #search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #search-input {
+            width: 300px;
+            height: 30px;
+            font-size: 16px;
+            padding: 5px;
+        }
+        
+        /* Style untuk hasil pencarian */
+        #search-results {
+            margin-left: auto;
+            margin-right: auto;
+            width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        /* Style untuk box pahlawan */
+        .hero-box {
+            width: 200px;
+            height: 250px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .hero-box img {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+        
+        /* Style untuk tampilan keterangan pahlawan */
+        #hero-details {
+            margin-left: auto;
+            margin-right: auto;
+            width: 500px;
+            display: none;
+        }
+        
+        #hero-details h2 {
+            margin-bottom: 10px;
+        }
+        
+        #hero-details p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pengenalan Pahlawan Nasional</h1>
+
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Cari pahlawan...">
+    </div>
+
+    <div id="search-results">
+        <div class="hero-box" onclick="openHeroPage('soekarno.html')">
+            <img src="foto/Soekarno.jpeg" alt="Soekarno">
+            <h2>Soekarno</h2>
+        </div>
+        <div class="hero-box" onclick="openHeroPage('soeharto.html')">
+            <img src="soeharto.jpg" alt="Soeharto">
+            <h2>Soeharto</h2>
+        </div>
+        <div class="hero-box" onclick="openHeroPage('cutnyakdien.html')">
+            <img src="cutnyakdien.jpg" alt="Cut Nyak Dien">
+            <h2>Cut Nyak Dien</h2>
+        </div>
+        <div class="hero-box" onclick="openHeroPage('kihajardewantara.html')">
+            <img src="kihajardewantara.jpg" alt="Ki Hajar Dewantara">
+            <h2>Ki Hajar Dewantara</h2>
+        </div>
+        <div class="hero-box" onclick="openHeroPage('radenajengkartini.html')">
+            <img src="radenajengkartini.jpg" alt="Raden Ajeng Kartini">
+            <h2>Raden Ajeng Kartini</h2>
+        </div>
+    </div>
+
+    <div id="hero-details">
+        <img id="hero-image" src="" alt="">
+        <h2 id="hero-name"></h2>
+        <p id="hero-description"></p>
+    </div>
+
+    <script>
+        // Ambil elemen input pencarian
+        var searchInput = document.getElementById('search-input');
+
+        // Tambahkan event listener untuk memantau perubahan pada input pencarian
+        searchInput.addEventListener('keyup', function(event) {
+            var searchTerm = event.target.value.toLowerCase();
+            var heroes = document.getElementsByClassName('hero-box');
+
+            // Loop melalui daftar pahlawan dan sembunyikan yang tidak sesuai dengan pencarian
+            for (var i = 0; i < heroes.length; i++) {
+                var heroName = heroes[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+                if (heroName.includes(searchTerm)) {
+                    heroes[i].style.display = 'flex';
+                } else {
+                    heroes[i].style.display = 'none';
+                }
+            }
+        });
+
+        // Fungsi untuk membuka halaman pahlawan dalam jendela baru
+        function openHeroPage(pageUrl) {
+            window.open(pageUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
