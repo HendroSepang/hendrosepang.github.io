@@ -1,14 +1,366 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Pemrograman Website</title>
-  <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Anjelika Mutiara Nurdin, S.Si!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Dancing+Script:wght@700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff6b6b;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        h2 {
+            color: #5f27cd;
+            margin-bottom: 15px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #ff6b6b, #5f27cd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+        }
+        
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #ff6b6b;
+            margin: 20px auto;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .message {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            border-left: 5px solid #ff6b6b;
+            text-align: left;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .message p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff6b6b;
+            animation: floatUp 4s linear forwards;
+            opacity: 0;
+        }
+        
+        .math-symbols {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        .math-symbol {
+            position: absolute;
+            font-size: 24px;
+            color: #5f27cd;
+            animation: floatDown 6s linear forwards;
+            opacity: 0.6;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
+            z-index: 9999;
+            animation: confettiFall 5s linear forwards;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #5f27cd);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .achievement {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: left;
+            animation: slideIn 1s ease-out;
+        }
+        
+        .achievement-icon {
+            font-size: 2rem;
+            color: #5f27cd;
+            margin-right: 15px;
+            min-width: 50px;
+        }
+        
+        .achievement-text h3 {
+            color: #5f27cd;
+            margin-bottom: 5px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        
+        @keyframes floatDown {
+            0% { transform: translateY(-100px); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .photo-frame {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
 </head>
-<body onload="hitungOperasi()">
-      <h3>Pada url Silahkan Tambahkan Parameter
-        <br> Sebagai Contoh https://hendrosepang.github.io/?angka1=5&angka2=10
-    </h3>
-  <h1>Operasi Dasar Matematika</h1>
-  <div id="hasil"></div>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="math-symbols" id="mathSymbols"></div>
+    
+    <div class="container">
+        <h1>Anjelika Mutiara Nurdin, S.Si</h1>
+        <h2>Sarjana <span class="gradient-text">Matematika</span> yang Cantik!</h2>
+        
+        <div class="photo-frame">
+            <!-- Ganti dengan foto Anjelika -->
+            <img src="https://via.placeholder.com/200" alt="Anjelika Mutiara Nurdin" id="profilePhoto">
+        </div>
+        
+        <div class="achievement">
+            <div class="achievement-icon">🎓</div>
+            <div class="achievement-text">
+                <h3>Resmi Lulus!</h3>
+                <p>Selamat atas kelulusan sidang skripsinya! Sekarang kamu adalah seorang Sarjana Sains (S.Si) di bidang Matematika. Aku bangga banget sama kamu!</p>
+            </div>
+        </div>
+        
+        <div class="message">
+            <p>Hai Sayangku Anjelika Mutiara Nurdin,</p>
+            <p>Selamat ya atas kelulusanmu! Perjuanganmu selama ini akhirnya terbayar sudah. Dari belajar rumus-rumus yang bikin pusing, sampai begadang ngerjain skripsi, semua itu kamu lalui dengan hebat.</p>
+            <p>Kamu itu kayak <strong>bilangan prima</strong> - istimewa dan nggak bisa dibagi hatimu ke orang lain selain aku, hehe. Atau kayak <strong>persamaan diferensial</strong> - kompleks tapi begitu indah ketika dipahami.</p>
+            <p>Aku tahu pasti kamu akan jadi wanita sukses. Siapa tahu nanti jadi profesor matematika, atau ahli data yang keren, atau apapun yang kamu mau. Yang pasti, aku selalu disini untuk mendukungmu.</p>
+            <p>Love you lebih dari semua bilangan real di dunia ini! ❤️</p>
+        </div>
+        
+        <button class="btn" id="celebrateBtn">Klik untuk Rayakan!</button>
+    </div>
+    
+    <footer>
+        Dibuat dengan ❤️ oleh pacarmu yang sangat bangga | © 2023
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animasi simbol matematika
+            const mathSymbols = ['∞', 'π', 'Σ', '∫', 'Δ', '√', '∅', 'θ', 'λ', 'φ', 'ω', '≈', '≠', '≤', '≥'];
+            const mathContainer = document.getElementById('mathSymbols');
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const symbol = document.createElement('div');
+                    symbol.className = 'math-symbol';
+                    symbol.textContent = mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
+                    symbol.style.left = Math.random() * 100 + '%';
+                    symbol.style.top = -50 + 'px';
+                    symbol.style.animationDuration = 3 + Math.random() * 7 + 's';
+                    mathContainer.appendChild(symbol);
+                    
+                    // Hapus simbol setelah animasi selesai
+                    setTimeout(() => {
+                        symbol.remove();
+                    }, 10000);
+                }, i * 300);
+            }
+            
+            // Tombol rayakan
+            const celebrateBtn = document.getElementById('celebrateBtn');
+            celebrateBtn.addEventListener('click', function() {
+                createHearts();
+                createConfetti();
+                this.textContent = 'Wuuuhuuu! 🎉';
+                setTimeout(() => {
+                    this.textContent = 'Rayakan Lagi!';
+                }, 2000);
+            });
+            
+            // Buat hati
+            function createHearts() {
+                const heartsContainer = document.getElementById('hearts');
+                
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = Math.random() * 100 + '%';
+                    heart.style.animationDuration = 2 + Math.random() * 3 + 's';
+                    heart.style.fontSize = 15 + Math.random() * 20 + 'px';
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }
+            }
+            
+            // Buat confetti
+            function createConfetti() {
+                const colors = ['#ff6b6b', '#5f27cd', '#ff9f43', '#2e86de', '#1dd1a1'];
+                
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = 5 + Math.random() * 10 + 'px';
+                    confetti.style.height = 5 + Math.random() * 10 + 'px';
+                    confetti.style.animationDuration = 3 + Math.random() * 4 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 5000);
+                }
+            }
+            
+            // Ganti foto placeholder dengan foto asli Anjelika
+            // document.getElementById('profilePhoto').src = 'url-foto-anjelika.jpg';
+        });
+    </script>
 </body>
 </html>
